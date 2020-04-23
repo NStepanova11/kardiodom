@@ -1,0 +1,82 @@
+/*------------------Заголовок страницы------------------*/
+.specialists{
+    margin: 40px auto;
+}
+
+/*------------------Карточка------------------*/
+.expert__card__list{
+    justify-content: space-around;
+}
+
+.expert__card{
+    display: block;
+    overflow: hidden;
+    height: auto;
+    width: 100%;
+    margin: 10px 0px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.expert__card__image{
+    height: 450px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: top;
+    background-size: cover;
+}
+
+/*
+.expert__card__image{
+    height: 450px;
+    width: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    vertical-align: top;
+}
+
+.expert__card__image img{
+    width: 100%;
+    height: auto;
+}
+*/
+
+/*------------------Текст карточки------------------*/
+.expert__card__body{
+    height: 150px;
+    width: auto;
+    overflow: hidden;
+    text-align: left;
+}
+
+.expert__card__body>p{
+    text-align: left;
+}
+
+/*------------------Кнопка Перейти------------------*/
+.expert__card__button{
+    padding: 20px;
+    width: 100%;
+}
+
+.btn__details{
+    font-size: 15px;
+    padding: 10px 30px;
+    border-radius: 25px;
+    vertical-align: middle;
+    width: 50%;
+}
+
+@media (max-width: 576px){
+    .expert__card__image{
+        height: 600px;
+    }
+}
+
+
+@media (max-width: 768px){
+    .expert__card__image{
+        height: 600px;
+    }
+}

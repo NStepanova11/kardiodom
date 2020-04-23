@@ -1,0 +1,29 @@
+/*
+Theme Name: Kardiodom
+*/
+
+body{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    background-color: white;
+}
+
+.page-header{
+    font-weight: normal;
+    font-size: 64px!important;
+    line-height: 72px!important;
+    margin-bottom: 0px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: #3e3b3b;
+}
+
+@media (max-width: 576px){
+    .page-header{
+        font-size: 48px!important;
+        line-height: 64px!important;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}

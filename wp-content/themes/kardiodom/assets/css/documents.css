@@ -1,0 +1,25 @@
+.doc__list{
+    padding-top: 0px;
+    padding-left: 40px;
+}
+.doc__item{
+    padding-top: 0px;
+    padding-bottom: 40px;
+}
+
+.doc__link__title{
+    text-align: left;
+    color: #003448;
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+.doc__download__link>a{
+    font-size: 48px;
+    color: #6b6b6b;
+    font-weight: 100;
+}
+
+.doc__download__link>a:hover{
+    color: #000000;
+}

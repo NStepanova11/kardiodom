@@ -1,0 +1,62 @@
+.short-info{
+    justify-content: center;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0px;
+}
+
+.short-info>*{
+    display: block;
+    justify-content: center;
+    align-self: start;
+}
+
+.short-info>h4{
+    font-weight: 500;
+    /*margin-left: 20px;*/
+    margin-bottom: 0px;
+    text-align: left;
+}
+
+.qualification{
+    padding-left: 15px;
+    border-left: 3px solid #ff0000;
+    margin: 30px;
+}
+
+.qualification > p{
+    text-align: left;
+}
+
+
+.diploma-list{
+    list-style: square;
+    margin-right: 40px;
+    padding-left: 20px;
+}
+
+.diploma-list li{
+    color: #ff0000;
+    padding-bottom: 20px;
+}
+
+
+.diploma-list>li>span{
+    color: #7c7979;
+}
+
+.expert__description__photo__wrapper{
+    height: 400px;
+    overflow: hidden;
+    margin: 20px auto;
+    padding: auto;
+    justify-content: center;
+}
+
+.expert__description__photo{
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}

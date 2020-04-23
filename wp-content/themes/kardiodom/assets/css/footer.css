@@ -1,0 +1,50 @@
+/*-----------------------Блок противопоказаний-----------------------*/
+.footer__attention{
+    background-color: #ececec;
+    margin: 20px auto;    
+    font-weight: 900;
+    font-size: 36pt;
+    /*line-height: 42px;*/
+    text-align: center;
+}
+
+.footer__attention__1{
+    color:#A9A8A8;
+    margin: 0px;
+}
+
+.footer__attention__2{
+    color:#888585;
+    margin: 0px;
+}
+
+/*-----------------------График работы, контакты, помощь-----------------------*/
+.footer__info__container{
+    color: #3e3b3b;
+}
+
+.work__time__list,
+.contacts,
+.help
+{
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.contacts,
+.help
+{
+    text-align: center;
+}
+
+.footer__info__title{
+    font-weight: 300;
+    margin-top: 0px!important;
+}
+
+@media(max-width: 576px){
+    .footer__attention{
+        font-size: 24px;
+        line-height: 36px;
+    }
+}
