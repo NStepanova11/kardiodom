@@ -55,11 +55,9 @@
                         <div class="col-lg-3 mx-auto">
                             <h5 class="mt-3 mb-4 footer__info__title">Помощь</h5>
                             <ul class="list-unstyled help">
-                                <li><a class = "text-dark" href="#!">На главную</a></li>
-                                <li><a class = "text-dark" href="#!">Карта сайта</a></li>
-                                <li><a class = "text-dark" href="#!">Поиск по сайту</a> </li>
-                                <li><a class = "text-dark" href="#!">Версия для слабовидящих</a></li>
-                                <li><a class = "text-dark" href="#!">Политика конфединцеальности</a>
+                                <li><a class = "text-dark" href="/">На главную</a></li>
+                                <li><a class = "text-dark" href="/price">Поиск по сайту</a> </li>
+                                <li class = "text-dark"><?php echo do_shortcode( '[bvi text="Версия для слабовидящих"]' ); ?></li>
                                 </li>
                             </ul>
                         </div>

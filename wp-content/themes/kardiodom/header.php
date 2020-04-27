@@ -9,19 +9,6 @@
     <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900&display=swap" rel="stylesheet">
     <!-- Styles -->
-<!--   
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">   
-
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/price.css">
-    <link rel="stylesheet" href="css/experts.css">
-    <link rel="stylesheet" href="css/documents.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/aboutexpert.css">
-    <link rel="stylesheet" href="css/contacts.css">
--->
     <?wp_head();?>
 
   <title>Медицинский центр "КардиоДом"</title>
@@ -42,8 +29,8 @@
           
                     <div class="collapse navbar-collapse" id="navbarNav">
                       <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="price.html" class="nav-link">Услуги и цены</a></li>
-                        <li class="nav-item"><a href="/experts" class="nav-link">Специалисты</a></li>
+                        <li class="nav-item"><a href="/price" class="nav-link">Услуги и цены</a></li>
+                        <li class="nav-item"><a href="<?php echo get_post_type_archive_link('specialist'); ?>" class="nav-link">Специалисты</a></li>
                         <li class="nav-item"><a href="/documents" class="nav-link">Документы</a></li>
                         <li class="nav-item"><a href="/about" class="nav-link">О нас</a></li>
                         <li class="nav-item"><a href="/contacts" class="nav-link">Контакты</a></li>
@@ -68,13 +55,12 @@
                             ?>
                         </div>
                   </div>
-                    
-                  <div class="search__container">
-                    <div class="search__box">
-                      <span class="search__icon"><i class="fa fa-search"></i></span>
-                      <input type="search" id="search" class = "search__input" placeholder="Поиск..." />
-                    </div>
-                  </div>
 
+                  <div class="search__container">
+                  <form class="search__box" action= "<?php __DIR__ . '/classes/searchPrice.php'?>">
+                      <span class="search__icon"><i class="fa fa-search"></i></span>
+                      <input type="search" id="search" class = "search__input" name = "search_form" placeholder="Поиск..." />
+                  </form>
+                  </div>
                 </div>
             </header>

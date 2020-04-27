@@ -12,6 +12,8 @@
         wp_enqueue_style('about-style', get_template_directory_uri() . '/assets/css/about.css'); 
         wp_enqueue_style('contacts-style', get_template_directory_uri() . '/assets/css/contacts.css'); 
         wp_enqueue_style('documents-style', get_template_directory_uri() . '/assets/css/documents.css'); 
+        wp_enqueue_style('vacancy-style', get_template_directory_uri() . '/assets/css/vacancy.css'); 
+        wp_enqueue_style('price-style', get_template_directory_uri() . '/assets/css/price.css'); 
         wp_enqueue_style('main-style', get_stylesheet_uri()); //подключает style.css Из корня
     }
 
@@ -139,4 +141,44 @@ function cardiodom_header_customize_register($wp_customize) {
          }
      ));
 */
+}
+
+
+//произвольный тип для галереи сотрудников
+add_theme_support( 'post-thumbnails' );
+add_action('init', 'specialists_create_post_type');
+function specialists_create_post_type(){
+    register_post_type('specialist',
+        array(
+            'labels' => array(
+                'name' => __('Специалисты'),
+                'singular_name' => __('Специалист'),
+                'add_new' => __('Добавить специалиста'),
+                'add_new_item' => __('ФИО:')
+            ),
+            'supports' => array('title', 'excerpt', 'editor', 'thumbnail'),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug'=>'specialists'),
+        )
+        );
+}
+
+
+//произвольный тип для вакансий
+add_action('init', 'vacancy_create_post_type');
+function vacancy_create_post_type(){
+    register_post_type('vacancy',
+        array(
+            'labels' => array(
+                'name' => __('Вакансии'),
+                'singular_name' => __('Вакансия'),
+                'add_new' => __('Добавить вакансию')
+            ),
+            'supports' => array('title', 'editor', 'excerpt'),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug'=>'vacancies')
+        )
+        );
 }

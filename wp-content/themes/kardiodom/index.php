@@ -13,32 +13,11 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active" style="background-image: url(<?php the_field('slide_image_1'); ?>);" >
                             <!--style="background-image: url(/wp-content/themes/kardiodom/assets/images/carousel/test-1.jpg);"-->
-                            <div class="carousel-caption">
-                                <h6><?php the_field('slide_title_1'); ?></h6>
-                                <h1><?php the_field('slide_subtitle_1'); ?></h1>
-                                <p>
-                                    <?php the_field('slide_text_1'); ?>
-                                </p>
-                            </div>
                         </div>
 
                         <div class="carousel-item" style="background-image: url(<?php the_field('slide_image_2'); ?>);">
-                            <div class="carousel-caption">
-                                <h6><?php the_field('slide_title_2'); ?></h6>
-                                <h1><?php the_field('slide_subtitle_2'); ?></h1>
-                                <p>
-                                    <?php the_field('slide_text_2'); ?>
-                                </p>
-                            </div>
                         </div>
                         <div class="carousel-item slide-img-container" style="background-image: url(<?php the_field('slide_image_3'); ?>);">
-                            <div class="carousel-caption">
-                                <h6><?php the_field('slide_title_3'); ?></h6>
-                                <h1><?php the_field('slide_subtitle_3'); ?></h1>
-                                <p>
-                                    <?php the_field('slide_text_3'); ?>
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -53,67 +32,67 @@
                             <img src="https://picsum.photos/300/150" class="card-img">
                             </div>
                             <div class="card-body service__card__body">
-                            <h5 class="card-title service__card__title">Прием врача</h5>
+                            <h5 class="card-title service__card__title">Услуги и цены</h5>
                             </div>
                         </div>
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                        <a href="#" class="service__card__link">
+                        <a href="<?php echo get_post_type_archive_link('specialist'); ?>" class="service__card__link">
                         <div class="card service__card">
                             <div class="service__card__img__container">
                             <img src="https://picsum.photos/300/200" class="card-img">
                             </div>
                             <div class="card-body service__card__body">
-                            <h5 class="card-title service__card__title">Узи</h5>
+                            <h5 class="card-title service__card__title">Специалисты</h5>
                             </div>
                         </div>
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                        <a href="#" class="service__card__link">
+                        <a href="/documents" class="service__card__link">
                         <div class="card service__card">
                             <div class="service__card__img__container">
                             <img src="https://picsum.photos/250/200" class="card-img">
                             </div>
                             <div class="card-body service__card__body">
-                            <h5 class="card-title service__card__title">Электрокардиография</h5>
+                            <h5 class="card-title service__card__title">Документы</h5>
                             </div>
                         </div>
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                        <a href="#" class="service__card__link">
+                        <a href="/about" class="service__card__link">
                         <div class="card service__card">
                             <div class="service__card__img__container">
                             <img src="https://picsum.photos/300/200" class="card-img">
                             </div>
                             <div class="card-body service__card__body">
-                            <h5 class="card-title service__card__title">Процедурный кабинет</h5>
+                            <h5 class="card-title service__card__title">О нас</h5>
                             </div>
                         </div>
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                        <a href="#" class="service__card__link">
+                        <a href="/contacts" class="service__card__link">
                         <div class="card service__card">
                             <div class="service__card__img__container">
                             <img src="https://picsum.photos/200/200" class="card-img">
                             </div>
                             <div class="card-body service__card__body">
-                            <h5 class="card-title service__card__title">Анализы</h5>
+                            <h5 class="card-title service__card__title">Контакты</h5>
                             </div>
                         </div>
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                        <a href="#" class="service__card__link">
+                        <a href="<?php echo get_post_type_archive_link('vacancy'); ?>" class="service__card__link">
                         <div class="card service__card">
                             <div class="service__card__img__container">
                             <img src="https://picsum.photos/300/200" class="card-img">
                             </div>
                             <div class="card-body service__card__body">
-                            <h5 class="card-title service__card__title">Документы</h5>
+                            <h5 class="card-title service__card__title">Вакансии</h5>
                             </div>
                         </div>
                         </a>

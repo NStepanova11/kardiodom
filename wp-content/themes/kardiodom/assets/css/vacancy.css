@@ -1,0 +1,45 @@
+.vacancy__card{
+    padding: 20px 30px;
+    border: 1px solid #d8d8d8;
+    border-radius: 25px;
+    margin-bottom: 40px;
+}
+
+.vacancy__card__title{
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 30px;
+    text-decoration: none;
+    color: #df3030;
+}
+
+.vacancy__card__title:hover{
+    color: #818181;
+    text-decoration: none;
+}
+
+.vacancy__date_right{
+    font-size: 16px;
+    text-align: right;
+    color: #b9b8b8;
+    font-style: italic;
+}
+
+.vacancy__date_left{
+    font-size: 16px;
+    text-align: left;
+    color: #b9b8b8;
+    font-style: italic;
+}
+
+.vacancy__container{
+    padding-bottom: 40px;
+    width: 80%;
+}
+
+.vacancy__title{
+    font-size: 20px;
+    line-height: 30px;
+    color: #df3030;
+    padding-bottom: 20px;
+}

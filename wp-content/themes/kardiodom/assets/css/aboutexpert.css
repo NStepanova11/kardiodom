@@ -34,8 +34,11 @@
     list-style: square;
     margin-right: 40px;
     padding-left: 20px;
+    color: #696767;
+    padding-left: 0px;
 }
 
+/*
 .diploma-list li{
     color: #ff0000;
     padding-bottom: 20px;
@@ -45,6 +48,7 @@
 .diploma-list>li>span{
     color: #7c7979;
 }
+*/
 
 .expert__description__photo__wrapper{
     height: 400px;
