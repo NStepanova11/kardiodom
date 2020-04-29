@@ -94,7 +94,7 @@
     font-size: 16pt;
 }
 
-#search{
+.search__input{
     outline: none;
 }
 

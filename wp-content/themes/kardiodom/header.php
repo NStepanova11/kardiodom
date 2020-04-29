@@ -57,10 +57,13 @@
                   </div>
 
                   <div class="search__container">
-                  <form class="search__box" action= "<?php __DIR__ . '/classes/searchPrice.php'?>">
+                  <?php get_search_form(); ?>
+<!--
+                  <form class="search__box" name="search" method="post" action="/test-price">
                       <span class="search__icon"><i class="fa fa-search"></i></span>
-                      <input type="search" id="search" class = "search__input" name = "search_form" placeholder="Поиск..." />
+                      <input type="search" id="search" class = "search__input" name = "search_query" placeholder="Поиск..." />
                   </form>
+-->
                   </div>
                 </div>
             </header>

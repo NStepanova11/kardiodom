@@ -13,7 +13,8 @@
         wp_enqueue_style('contacts-style', get_template_directory_uri() . '/assets/css/contacts.css'); 
         wp_enqueue_style('documents-style', get_template_directory_uri() . '/assets/css/documents.css'); 
         wp_enqueue_style('vacancy-style', get_template_directory_uri() . '/assets/css/vacancy.css'); 
-        wp_enqueue_style('price-style', get_template_directory_uri() . '/assets/css/price.css'); 
+        wp_enqueue_style('search-style', get_template_directory_uri() . '/assets/css/search.css'); 
+
         wp_enqueue_style('main-style', get_stylesheet_uri()); //подключает style.css Из корня
     }
 
