@@ -17,6 +17,7 @@ class PriceTable{
     }
 
     private function parse_xlsx(){
+        //удаляет строку заголовка из массива значений
         $this->title= $this->sheet[0];
         unset($this->sheet[0]);
 
@@ -28,16 +29,18 @@ class PriceTable{
                     $empty_count++;
             }
 
+            //если строка не пустая, сохраняет ее в price_list
             if ($empty_count!=count($row))
                 array_push($this->price_list, $row);
             
+            //если в строке только одна непустая ячейка, то сохраняет ее индекс в массив позаголовков
             if ($empty_count==count($row)-1)
                 array_push($this->subtitles, count($this->price_list)-1);
             $n++;
         }
     }
 
-
+    //поиск по запросу (search.php)
    public function get_search_result($query){
         if (!empty($query)) { 
             $search_result = $this->search($query); 
@@ -45,22 +48,53 @@ class PriceTable{
         }
    }
       
+   //приведение к нижнему регистру и поиск построки в каждой ячейке строки (код, название, цена) 
    private function search($search_query){
        $search_res = array();
        $search_query = trim(mb_convert_case($search_query, MB_CASE_LOWER, "UTF-8"));
 
-       foreach($this->price_list as $row){
+       foreach($this->price_list as $key=>$row){
            foreach($row as $cell_value){
                $value = mb_convert_case($cell_value, MB_CASE_LOWER, "UTF-8");
                if (strpos($value, $search_query)!==false){
-                   array_push($search_res, $row);
+                   if (in_array($key, $this->subtitles, true)==false){
+                        array_push($search_res, $row);
+                   }
                }
            }
        }
        return $search_res;
    }
 
-   private function show_header(){
+  
+   //вывод результата поиска
+   private function show_search_result($search_result){
+        if (count($search_result)!=0){  
+            $this->show_recommendation();
+
+            echo '<div class = "search__result__title">';
+                echo "Результатов по запросу \"".get_search_query()."\" : ".count($search_result);
+            echo '</div>';
+
+            $this->show_table($search_result);
+          
+        }
+        else{
+            echo '<div class = "no__result">';
+                echo "По запросу \"".get_search_query()."\" ничего не найдено";
+            echo '</div>';
+        }
+    }
+
+    //вывод прайса на стр услуги и цены
+    public function show_price_table(){
+        $this->show_recommendation();
+        $this->show_table($this->price_list);
+    }    
+
+
+    //вывод строки заголовка на страницу
+    private function show_header(){
         echo '<tr class="price__table__title">';
 
         for( $i=0; $i<count($this->title); $i++){
@@ -70,77 +104,55 @@ class PriceTable{
             echo '</td>';
         }
         echo '</tr>';
-   }
-
-   private function show_search_result($search_result){
-        if (count($search_result)!=0){ 
-            echo '<div class = "analyzes_recommendation">';
-                echo 'Важное уточнение: все анализы проводятся натощак';
-            echo '</div>';
-
-            echo '<div class = "search__result__title">';
-                echo "Результатов по запросу \"".get_search_query()."\" : ".count($search_result);
-            echo '</div>';
-
-            echo '<div class= "table__box">';
-            echo '<table class="price__table">';
-            $this->show_header();
-            foreach($search_result as $key=>$row){
-                echo '<tr class="price__table__row">';
-                    /*if(in_array($key, $this->subtitles, true)!=false){
-                        echo '<td class="subtitle" colspan = "'.strval(count($row)).'">';
-                        echo $row[0];
-                        echo '</td>';
-                    }
-                    else{*/
-                        for( $i=0; $i<count($row); $i++){
-                            $table_class = "\"price__table__cell__".strval($i)."\"";
-                            echo '<td class='.$table_class.'>';
-                                echo $row[$i];
-                            echo '</td>';
-                        }
-                   // }
-                echo '</tr>';
-            }
-            echo '</table>';
-            echo '</div>';
-        }
-        else{
-            echo '<div class = "no__result">';
-                echo 'По запросу <?php echo "\"".get_search_query()."\"";?> ничего не найдено';
-            echo '</div>';
-        }
     }
 
-    public function show_price_table(){
-        echo '<div class = "analyzes_recommendation">';
+    //вывод рекомендации
+    private function show_recommendation(){
+            echo '<div class = "analyzes_recommendation">';
             echo 'Важное уточнение: все анализы проводятся натощак';
-        echo '</div>';
+            echo '</div>';
+    }
 
-        echo '<div class= "table__box">';
-        echo '<table class="price__table">';
-        $this->show_header();
 
-        foreach($this->price_list as $key=>$row){
-                echo '<tr class="price__table__row">';
-                    if(in_array($key, $this->subtitles, true)!=false){
-                        echo '<td class="subtitle" colspan = "'.strval(count($row)).'">';
-                        echo $row[0];
-                        echo '</td>';
-                    }
-                    else{
-                        for( $i=0; $i<count($row); $i++){
-                            $table_class = "\"price__table__cell__".strval($i)."\"";
-                            echo '<td class='.$table_class.'>';
-                                echo $row[$i];
-                            echo '</td>';
-                        }
-                    }
-                echo '</tr>';
-        }
+    //вывод таблицы
+    private function show_table($table){
+        $is_price = false;
+        if ($table == $this->price_list)
+            $is_price=true;
+
+    echo '<div class= "table__box">';
+    echo '<table class="price__table">';
+    $this->show_header();
+    foreach($table as $key=>$row){
+        echo '<tr class="price__table__row">';
+
+        if ($is_price){
+                if(in_array($key, $this->subtitles, true)!=false){
+                    echo '<td class="subtitle" colspan = "'.strval(count($row)).'">';
+                    echo $row[0];
+                    echo '</td>';
+                }
+                else{
+                    $this->show_table_cells($row);
+                }
+            }
+            else{
+                $this->show_table_cells($row);
+            }
+        echo '</tr>';
+    }
         echo '</table>';
         echo '</div>';
+    }
 
+    //вывод ячеек таблицы
+    private function show_table_cells($row){
+        for( $i=0; $i<count($row); $i++){
+            $table_class = "\"price__table__cell__".strval($i)."\"";
+            echo '<td class='.$table_class.'>';
+                echo $row[$i];
+            echo '</td>';
+        }
     }
 }
 ?>

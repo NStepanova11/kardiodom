@@ -17,15 +17,17 @@
 }
 
 .analyzes_recommendation{
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     color: #ff0000;
     font-size: 18px;
 }
 
 .search__result__title{
-    color: #b6b5b5;
+    color: #8f8f8f;
     font-size: 16px;
     font-weight: 300;
+    padding-bottom: 10px;
 }
 
 .subtitle{
@@ -38,6 +40,15 @@
     color: #ffffff;
 }
 
+.no__result{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+    color: #8f8f8f;
+    font-size: 18px;
+    font-weight: 300;
+}
+
 .price__table__title>td{
     padding: 20px 10px;
 }
@@ -45,5 +56,14 @@
 @media (max-width: 768px){
     .table__box{
         overflow-x: scroll;
+    }
+
+    .price__table__cell__1{
+        width: 60%;
+    }
+    
+    .price__table__cell__0,
+    .price__table__cell__2{
+        width: 20%;
     }
 }

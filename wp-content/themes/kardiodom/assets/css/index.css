@@ -83,3 +83,7 @@
     font-weight: 500;
     color: #000000;
 }
+
+.service__card__link:hover{
+    text-decoration: none;
+}
