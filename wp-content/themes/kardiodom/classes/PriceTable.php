@@ -10,39 +10,47 @@ class PriceTable{
     private $price_list = array();
 
     function __construct(){
-        $this->xlsx = new SimpleXLSX(__DIR__ . '/../assets/docs/price.xlsx');
-        $this->sheet = $this->xlsx->rows();
+        //$this->xlsx = new SimpleXLSX(__DIR__ . '/../assets/docs/price.xlsx');
 
-        $this->parse_xlsx();
+        $url = get_site_url();
+        $path_to_xlsx = (ABSPATH . substr(get_theme_mod('price_file'),strlen($url)+1));
+        if (!empty(get_theme_mod('price_file'))){
+            $this->xlsx = new SimpleXLSX($path_to_xlsx);
+            $this->sheet = $this->xlsx->rows();
+            $this->parse_xlsx();
+        }
     }
 
     private function parse_xlsx(){
-        //удаляет строку заголовка из массива значений
-        $this->title= $this->sheet[0];
-        unset($this->sheet[0]);
 
-        foreach($this->sheet as $key=>$row){
-            
-            $empty_count = 0;
-            for($i=0; $i<count($row); $i++){
-                if(empty($row[$i]))
-                    $empty_count++;
+        if (!empty($this->sheet)){
+            //удаляет строку заголовка из массива значений
+            $this->title= $this->sheet[0];
+            unset($this->sheet[0]);
+
+            foreach($this->sheet as $key=>$row){
+                
+                $empty_count = 0;
+                for($i=0; $i<count($row); $i++){
+                    if(empty($row[$i]))
+                        $empty_count++;
+                }
+
+                //если строка не пустая, сохраняет ее в price_list
+                if ($empty_count!=count($row))
+                    array_push($this->price_list, $row);
+                
+                //если в строке только одна непустая ячейка, то сохраняет ее индекс в массив позаголовков
+                if ($empty_count==count($row)-1)
+                    array_push($this->subtitles, count($this->price_list)-1);
+                $n++;
             }
-
-            //если строка не пустая, сохраняет ее в price_list
-            if ($empty_count!=count($row))
-                array_push($this->price_list, $row);
-            
-            //если в строке только одна непустая ячейка, то сохраняет ее индекс в массив позаголовков
-            if ($empty_count==count($row)-1)
-                array_push($this->subtitles, count($this->price_list)-1);
-            $n++;
         }
     }
 
     //поиск по запросу (search.php)
    public function get_search_result($query){
-        if (!empty($query)) { 
+        if (!empty($query) && !empty($this->price_list)) { 
             $search_result = $this->search($query); 
             $this->show_search_result($search_result);
         }
@@ -66,15 +74,16 @@ class PriceTable{
        return $search_res;
    }
 
-  
    //вывод результата поиска
    private function show_search_result($search_result){
         if (count($search_result)!=0){  
             $this->show_recommendation();
 
+            /*
             echo '<div class = "search__result__title">';
                 echo "Результатов по запросу \"".get_search_query()."\" : ".count($search_result);
             echo '</div>';
+            */
 
             $this->show_table($search_result);
           
@@ -88,8 +97,10 @@ class PriceTable{
 
     //вывод прайса на стр услуги и цены
     public function show_price_table(){
-        $this->show_recommendation();
-        $this->show_table($this->price_list);
+        if (!empty($this->price_list)){
+            $this->show_recommendation();
+            $this->show_table($this->price_list);
+        }
     }    
 
 

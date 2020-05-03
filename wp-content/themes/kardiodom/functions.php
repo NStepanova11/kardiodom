@@ -27,8 +27,8 @@
 	wp_enqueue_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array( 'jquery' ), '4.0.0', true );
     }
 
-add_action('customize_register', 'cardiodom_footer_customize_register');
 
+add_action('customize_register', 'cardiodom_footer_customize_register');
 function cardiodom_footer_customize_register($wp_customize) {
     //FOOTER
     $wp_customize->add_section('footer', array(
@@ -98,7 +98,6 @@ function cardiodom_footer_customize_register($wp_customize) {
 }
 
 add_action('customize_register', 'cardiodom_header_customize_register');
-
 function cardiodom_header_customize_register($wp_customize) {
     $wp_customize->add_section('header', array(
         'title' => 'Заголовок сайта',
@@ -134,7 +133,8 @@ function cardiodom_header_customize_register($wp_customize) {
          'label' => 'Объявление ЗЕЛЕНОГО цвета:',
          'description' => "Текст, введенный в это поле будет отображаться в блоке объявлений зеленым цветом"
      ));
- /*
+
+/*
      $wp_customize->selective_refresh->add_partial($green_info_setting, array(
          'selector' => '.header__info_2',
          'render_callback' => function() use ($green_info_setting) {
@@ -144,6 +144,34 @@ function cardiodom_header_customize_register($wp_customize) {
 */
 }
 
+//price block/
+add_action('customize_register', 'cardiodom_price_customize_register');
+function cardiodom_price_customize_register($wp_customize) {
+    $wp_customize->add_section('price', array(
+        'title' => 'Прайс-лист',
+        'priority' => 1,
+    ));
+
+    $price_setting = 'price_file';
+    $wp_customize->add_setting($price_setting, array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_textarea_field',
+        'transport' => 'postMessage'
+    ));
+
+    $wp_customize->add_control( 
+        new WP_Customize_Upload_Control( 
+        $wp_customize, 
+        $price_setting, 
+        array(
+            'label' => 'Файл прайса:',
+            'description' => "Загрузите файл формата .xlsx, который содержит столбцы КОД, НАЗВАНИЕ, ЦЕНА в соответствующем порядке",
+            'section'    => 'price',
+            'settings'   => $price_setting,
+        ) 
+    ) 
+        );
+}
 
 //произвольный тип для галереи сотрудников
 add_theme_support( 'post-thumbnails' );
@@ -164,7 +192,6 @@ function specialists_create_post_type(){
         )
         );
 }
-
 
 //произвольный тип для вакансий
 add_action('init', 'vacancy_create_post_type');

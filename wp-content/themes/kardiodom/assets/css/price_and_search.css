@@ -1,3 +1,7 @@
+.price__table{
+    width: 100%;
+    margin: 0%;
+}
 .price__table__row>td{
     vertical-align: top;
     padding: 20px 10px;
@@ -65,5 +69,10 @@
     .price__table__cell__0,
     .price__table__cell__2{
         width: 20%;
+    }
+
+    .price__table__row>td{
+        vertical-align: top;
+        padding: 10px 5px;
     }
 }
